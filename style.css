@@ -28,3 +28,9 @@ body * {
   display: block;
   margin: auto;
 }
+
+#profile p {
+  font-weight: 500;
+  line-height: 24px;
+  text-align: center;
+}
