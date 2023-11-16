@@ -7,9 +7,9 @@
 :root {
   --text-color: white;
   --bg-url: url(./assets/bg-mobile.jpg);
-  --strok-color: rgba(255, 255, 255, 0.5);
-  --surface-color: rgba(255, 255, 255, 0.1);
-  --surface-color-haver: rgba(0, 0, 0, 0.02);
+  --stroke-color: rgba(255, 255, 255, 0.5);
+  --surface-color: rgba(255, 255, 255, 0.05);
+  --surface-color-hover: rgba(0, 0, 0, 0.02);
   --highlight-color: rgba(255, 255, 255, 0.2);
   --switch-bg-url: url(./assets/moon-stars.svg);
 }
@@ -17,22 +17,16 @@
 .light {
   --text-color: black;
   --bg-url: url(./assets/bg-mobile-light.jpg);
-  --strok-color: rgba(0, 0, 0, 0.5);
+  --stroke-color: rgba(0, 0, 0, 0.5);
   --surface-color: rgba(0, 0, 0, 0.05);
-  --surface-color-haver: rgba(255, 255, 255, 0.05);
+  --surface-color-hover: rgba(255, 255, 255, 0.05);
   --highlight-color: rgba(0, 0, 0, 0.1);
   --switch-bg-url: url(./assets/sun.svg);
 }
 
 body {
-  /*
-  background-image: url(./assets/bg-mobile.jpg);
-  background-repeat: no-repeat;
-  background-position: top center;
-  background-size: cover;
-  */
-  /*background: color image repeat posirion/size*/
   background: var(--bg-url) no-repeat top center/cover;
+  height: 100vh;
 }
 
 body * {
@@ -45,15 +39,14 @@ body * {
   max-width: 588px;
   margin: 56px auto 0px auto;
   padding: 0 24px;
-  /*
-  margin-right: auto;
-  margin-left: auto;*/
 }
-/*profile*/
+
+/* profile */
 #profile {
   text-align: center;
   padding: 24px;
 }
+
 #profile img {
   width: 112px;
   display: block;
@@ -65,7 +58,8 @@ body * {
   line-height: 24px;
   margin-top: 8px;
 }
-/*switch*/
+
+/* switch */
 #switch {
   position: relative;
   width: 64px;
@@ -82,27 +76,30 @@ body * {
   position: absolute;
   z-index: 1;
   left: 0%;
-  top:50%;
+  top: 50%;
   transform: translateY(-50%);
 }
 
-.light #switch button{
-  right: 0%;
-  left: initial;
+.light #switch button {
+  animation: slide-in 0.4s forwards;
 }
 
-#switch spam {
+#switch span {
   display: block;
   width: 64px;
   height: 24px;
   background: var(--surface-color);
-  border: var(--strok-color);
+  border: var(--stroke-color);
   backdrop-filter: blur(4px);
   border-radius: 9999px;
 }
 
-/*Links*/
-Ul {
+#switch button:hover {
+  outline: 8px solid var(--highlight-color);
+}
+
+/* links */
+ul {
   list-style: none;
   display: flex;
   flex-direction: column;
@@ -115,9 +112,8 @@ ul li a {
   align-items: center;
   justify-content: center;
   padding: 16px 24px;
-
   border-radius: 8px;
-  border: 1px solid var(--strok-color);
+  border: 1px solid var(--stroke-color);
   background: var(--surface-color);
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
@@ -128,23 +124,22 @@ ul li a {
 
 ul li a:hover {
   border: 1.5px solid var(--text-color);
-  background: var(--surface-color-haver);
+  background: var(--surface-color-hover);
 }
 
-/*social links*/
-
+/* social links */
 #social-links {
   display: flex;
   padding: 24px 0;
   font-size: 24px;
   justify-content: center;
 }
+
 #social-links a {
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 16px;
-
   transition: background 0.2s;
   border-radius: 50%;
 }
@@ -159,13 +154,23 @@ footer {
   font-size: 14px;
 }
 
-/* media querie*/
-@media (min-width:700px){
-  :root{
-    --bg-url: url(./assests/bg-desktop.jpg)
+/* media query */
+@media (min-width: 700px) {
+  :root {
+    --bg-url: url(./assets/bg-desktop.jpg);
   }
 
-  :light{
-    --bg-url: url(./assests/bg-desktop-light.jpg)
+  .light {
+    --bg-url: url(./assets/bg-desktop-light.jpg);
+  }
+}
+
+/* animation */
+@keyframes slide-in {
+  from {
+    left: 0;
+  }
+  to {
+    left: 50%;
   }
 }
